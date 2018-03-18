@@ -6,7 +6,6 @@ import threading
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
-import cv2
 import os
 import json
 
