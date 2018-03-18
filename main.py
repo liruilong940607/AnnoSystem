@@ -150,6 +150,7 @@ class ControlWindow(QMainWindow):
 
 		self.currentID = -1
 		self.imagelist = os.listdir(ROOT_DIR)
+		self.imagelist = [item for item in self.imagelist if item[-4:]=='.jpg']
 		self.imagelist.sort(key=lambda x:int(x[:-4]))
 
 		self.qlabel = MyQLabel(self)
@@ -190,6 +191,10 @@ class ControlWindow(QMainWindow):
 	def nextItem(self):
 		global CurrentAnnos
 		CurrentAnnos.newItem()
+		self.buttonlist[CurrentAnnos.cur_partID].setChecked(True)
+		for bt in self.buttonlist:
+			bt.setStyleSheet("background-color: None")
+		self.buttonlist[CurrentAnnos.cur_partID].setStyleSheet("background-color: red")
 		CurrentAnnos.print('nextItem')
 
 	def nextPart(self):
